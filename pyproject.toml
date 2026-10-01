@@ -1,0 +1,110 @@
+[project]
+name = "skala-ds-mini-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "luk0715", email = "304791089+luk0715@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.4.0",
+    "mat73>=0.65",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+    "pandas>=3.0.6",
+    "scipy>=1.18.1",
+    "scipy-stubs~=1.18.1",
+]
+
+[project.scripts]
+skala-ds-mini-project = "skala_ds_mini_project:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+# 프로젝트 Python 버전에 맞게 변경
+target-version = "py311"
+
+# 데이터 분석 코드는 체이닝/조건식 때문에 조금 넉넉하게
+line-length = 100
+
+# 생성물 / 외부 데이터는 검사 대상에서 제외
+extend-exclude = [
+    ".venv",
+    "build",
+    "dist",
+    "data/raw",
+    "data/external",
+    "artifacts",
+    "outputs",
+]
+
+# ─────────────────────────────
+# RUFF
+# ─────────────────────────────
+[tool.ruff.lint]
+select = [
+    # ─────────────────────────────
+    # 기본 오류 탐지
+    # ─────────────────────────────
+    "E4",    # import / whitespace 관련
+    "E7",    # statement 관련
+    "E9",    # syntax/runtime 수준 오류
+    "F",     # Pyflakes
+
+    # ─────────────────────────────
+    # import / Python 현대화
+    # ─────────────────────────────
+    "I",     # isort
+    "UP",    # pyupgrade
+
+    # ─────────────────────────────
+    # 버그 / 코드 품질
+    # ─────────────────────────────
+    "B",     # flake8-bugbear
+    "SIM",   # 코드 단순화
+    "C4",    # comprehension 개선
+    "PIE",   # 불필요하거나 잘못된 패턴
+    "RUF",   # Ruff 자체 권장 규칙
+
+    # ─────────────────────────────
+    # 데이터 분석
+    # ─────────────────────────────
+    "NPY",   # NumPy 관련
+    "PERF",  # 성능상 좋지 않은 Python 패턴
+    "ICN",   # np, pd, plt 등의 import convention
+
+    # pandas-vet 중 실용적인 규칙만 선택
+    "PD002", # inplace=True 지양
+    "PD003", # isnull -> isna
+    "PD004", # notnull -> notna
+    "PD007", # deprecated .ix
+    "PD011", # .values -> .to_numpy() / .array
+    "PD012", # read_table -> read_csv
+    "PD101", # 비효율적인 nunique 사용
+]
+
+# Formatter와 역할이 겹치는 규칙은 굳이 켜지 않음
+ignore = []
+
+
+[tool.ruff.lint.per-file-ignores]
+# Jupyter Notebook은 탐색적 분석 환경이므로 완화
+"*.ipynb" = [
+    "E402",  # 중간 셀에서 import 허용
+    "F401",  # 실험용 import 허용
+    "F841",  # 중간 결과 변수 허용
+]
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false
+
+# docstring 안 코드도 formatter 적용
+docstring-code-format = true
