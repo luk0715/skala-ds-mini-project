@@ -17,6 +17,12 @@ dependencies = [
     "scipy-stubs~=1.18.1",
 ]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.16.10",
+]
+
+
 [project.scripts]
 skala-ds-mini-project = "skala_ds_mini_project:main"
 
@@ -50,32 +56,32 @@ select = [
     # ─────────────────────────────
     # 기본 오류 탐지
     # ─────────────────────────────
-    "E4",    # import / whitespace 관련
-    "E7",    # statement 관련
-    "E9",    # syntax/runtime 수준 오류
-    "F",     # Pyflakes
+    "E4", # import / whitespace 관련
+    "E7", # statement 관련
+    "E9", # syntax/runtime 수준 오류
+    "F", # Pyflakes
 
     # ─────────────────────────────
     # import / Python 현대화
     # ─────────────────────────────
-    "I",     # isort
-    "UP",    # pyupgrade
+    "I", # isort
+    "UP", # pyupgrade
 
     # ─────────────────────────────
     # 버그 / 코드 품질
     # ─────────────────────────────
-    "B",     # flake8-bugbear
-    "SIM",   # 코드 단순화
-    "C4",    # comprehension 개선
-    "PIE",   # 불필요하거나 잘못된 패턴
-    "RUF",   # Ruff 자체 권장 규칙
+    "B", # flake8-bugbear
+    "SIM", # 코드 단순화
+    "C4", # comprehension 개선
+    "PIE", # 불필요하거나 잘못된 패턴
+    "RUF", # Ruff 자체 권장 규칙
 
     # ─────────────────────────────
     # 데이터 분석
     # ─────────────────────────────
-    "NPY",   # NumPy 관련
-    "PERF",  # 성능상 좋지 않은 Python 패턴
-    "ICN",   # np, pd, plt 등의 import convention
+    "NPY", # NumPy 관련
+    "PERF", # 성능상 좋지 않은 Python 패턴
+    "ICN", # np, pd, plt 등의 import convention
 
     # pandas-vet 중 실용적인 규칙만 선택
     "PD002", # inplace=True 지양
@@ -94,9 +100,9 @@ ignore = []
 [tool.ruff.lint.per-file-ignores]
 # Jupyter Notebook은 탐색적 분석 환경이므로 완화
 "*.ipynb" = [
-    "E402",  # 중간 셀에서 import 허용
-    "F401",  # 실험용 import 허용
-    "F841",  # 중간 결과 변수 허용
+    "E402", # 중간 셀에서 import 허용
+    "F401", # 실험용 import 허용
+    "F841", # 중간 결과 변수 허용
 ]
 
 
