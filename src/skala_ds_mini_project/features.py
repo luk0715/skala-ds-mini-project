@@ -1,4 +1,4 @@
-"""Reusable early-cycle features from main.ipynb; no model fitting or plotting."""
+"""Reusable early-cycle features from eda.ipynb; no model fitting or plotting."""
 
 import re
 from collections.abc import Mapping
